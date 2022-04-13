@@ -16,17 +16,20 @@ public class LinkedListStack<E> implements Stack<E> {
     }
 
     @Override
-    public E pop() {
+    public E pop()
+    {
         return data.removeFirst();
     }
 
     @Override
     public E peek() {
+
         return data.getFirst();
     }
 
     @Override
-    public int size() {
+    public int size()
+    {
         return data.size();
     }
 

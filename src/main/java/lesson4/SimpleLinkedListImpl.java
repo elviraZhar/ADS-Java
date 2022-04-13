@@ -1,6 +1,9 @@
 package lesson4;
 
-public class SimpleLinkedListImpl<E> implements LinkedList<E> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class SimpleLinkedListImpl<E> implements LinkedList<E>, Iterable<E> {
 
     protected Node<E> first;
     protected int size;
@@ -25,11 +28,13 @@ public class SimpleLinkedListImpl<E> implements LinkedList<E> {
     }
 
     @Override
-    public boolean contains(E value) {
+    public boolean contains(E value)
+    {
         return indexOf(value) != null;
     }
 
     private Node<E> indexOf(E value) {
+        Node<E> prev = null;
         Node<E> current = first;
 
         while (current != null) {
@@ -105,5 +110,29 @@ public class SimpleLinkedListImpl<E> implements LinkedList<E> {
     @Override
     public E getFirst() {
         return first.value;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ListIterator<>();
+    }
+
+    private class ListIterator<E> implements Iterator<E> {
+        Node<E> current;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public E next() {
+            if (current == null) {
+                throw new NoSuchElementException();
+            }
+            Node<E> value = current;
+            return (E) value;
+        }
+
     }
 }

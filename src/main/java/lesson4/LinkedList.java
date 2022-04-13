@@ -21,10 +21,13 @@ public interface LinkedList<E> {
     class Node<E> {
         E value;
         Node<E> next;
+        Node<E> prev;
 
         public Node(E value, Node<E> next) {
             this.value = value;
             this.next = next;
+            this.prev = prev;
         }
-    }
+
+           }
 }

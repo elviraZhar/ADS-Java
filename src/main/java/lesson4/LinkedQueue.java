@@ -1,6 +1,6 @@
 package lesson4;
 
-public class LinkedQueue<E> implements Queue<E> {
+public class LinkedQueue    <E> implements Queue<E> {
     private final TwoSideLinkedList<E> data;
 
 

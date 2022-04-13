@@ -3,6 +3,8 @@ package lesson4;
 public class TwoSideLinkedListImpl<E> extends SimpleLinkedListImpl<E> implements TwoSideLinkedList<E>{
 
     protected Node<E> last;
+    protected Node<E> prev;
+    protected Node<E> currrent;
 
     @Override
     public void insertFirst(E value) {
@@ -19,6 +21,24 @@ public class TwoSideLinkedListImpl<E> extends SimpleLinkedListImpl<E> implements
             return;
         }
         last.next = last = new Node<>(value, null);
+    }
+
+    public void insertIndex(int index, E value) {
+        Node<E> current = first;
+        Node<E> prev = null;
+
+        if (index < 1 || index > size() + 1) {
+            return;//Вставка не возможна
+        }
+
+        while (current != null) {
+            if (current.value.equals(index)) {
+                prev = current;
+                current = new Node<E>(value, prev);
+//                current.next = Node<E>(value, current);
+                size++;
+            }
+        }
     }
 
     @Override
